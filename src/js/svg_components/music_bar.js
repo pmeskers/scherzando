@@ -10,26 +10,10 @@ class MusicBar extends React.Component {
     var topMargin = 50;
     var bottomMargin = 50;
     var leftMargin = 0;
-    var lineLength = 1200;
+    var lineLength = 1300;
 
     var trueHeight = topMargin + (4 * gapWidth) + bottomMargin + 50;
     var trueWidth = lineLength + 25;
-
-    var fSharp = (
-      <g transform="translate(0, -305)">
-        <Sharp />
-      </g>
-    );
-    var cSharp = (
-      <g transform="translate(120, -130)">
-        <Sharp />
-      </g>
-    );
-    var gSharp = (
-      <g transform="translate(240, -370)">
-        <Sharp />
-      </g>
-    );
 
     return (
       <svg width={this.props.width} height={this.props.height} viewBox={`0 0 ${trueWidth} ${trueHeight}`}>
@@ -48,14 +32,42 @@ class MusicBar extends React.Component {
         </g>
 
         <g>
-          {fSharp}
-          {cSharp}
-          {gSharp}
+          {sharps.f}
+          {sharps.c}
+          {sharps.g}
+          {sharps.d}
+          {sharps.a}
+          {sharps.e}
+          {sharps.b}
         </g>
       </svg>
     );
   }
 }
+
+var sharps = {
+  f: (<g transform="translate(0, -305)">
+        <Sharp />
+      </g>),
+  c: (<g transform="translate(120, -130)">
+        <Sharp />
+      </g>),
+  g: (<g transform="translate(240, -370)">
+        <Sharp />
+      </g>),
+  d: (<g transform="translate(360, -195)">
+        <Sharp />
+      </g>),
+  a: (<g transform="translate(480, -10)">
+        <Sharp />
+      </g>),
+  e: (<g transform="translate(600, -260)">
+        <Sharp />
+      </g>),
+  b: (<g transform="translate(720, -75)">
+        <Sharp />
+      </g>)
+};
 
 MusicBar.propTypes = {
   height: React.PropTypes.any,
