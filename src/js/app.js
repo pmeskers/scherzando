@@ -6,7 +6,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Scherzando</h1>
-        <MusicBar />
+        <MusicBar width={500} height={500}/>
       </div>
     );
   }
