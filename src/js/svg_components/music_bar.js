@@ -1,6 +1,7 @@
 var React = require('react');
 var TrebleClef = require('./treble_clef.js');
 var Sharp = require('./sharp.js');
+var Flat = require('./flat.js');
 
 // I want to hardcode these values at some point, not sure it's valuable to keep them programmatic like this
 
@@ -32,18 +33,27 @@ class MusicBar extends React.Component {
         </g>
 
         <g>
-          {sharps.f}
-          {sharps.c}
-          {sharps.g}
-          {sharps.d}
-          {sharps.a}
-          {sharps.e}
-          {sharps.b}
+          {flats.b}
+          {flats.e}
+          {flats.a}
+          {flats.d}
+          {flats.g}
+          {flats.c}
+          {flats.f}
         </g>
       </svg>
     );
   }
 }
+        // <g>
+          // {sharps.f}
+          // {sharps.c}
+          // {sharps.g}
+          // {sharps.d}
+          // {sharps.a}
+          // {sharps.e}
+          // {sharps.b}
+        // </g>
 
 var sharps = {
   f: (<g transform="translate(0, -305)">
@@ -66,6 +76,30 @@ var sharps = {
       </g>),
   b: (<g transform="translate(720, -75)">
         <Sharp />
+      </g>)
+};
+
+var flats = {
+  b: (<g transform="translate(0, -310)">
+        <Flat />
+      </g>),
+  e: (<g transform="translate(120, -490)">
+        <Flat />
+      </g>),
+  a: (<g transform="translate(240, -250)">
+        <Flat />
+      </g>),
+  d: (<g transform="translate(360, -430)">
+        <Flat />
+      </g>),
+  g: (<g transform="translate(480, -190)">
+        <Flat />
+      </g>),
+  c: (<g transform="translate(600, -370)">
+        <Flat />
+      </g>),
+  f: (<g transform="translate(720, -130)">
+        <Flat />
       </g>)
 };
 
