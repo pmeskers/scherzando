@@ -4,7 +4,7 @@ var App = require('./app.js');
 
 function run() {
   ReactDOM.render(
-    <App title='welcome.'/>,
+    <App/>,
     document.getElementById('app')
   );
 }

@@ -1,15 +1,15 @@
 var React = require('react');
+var MusicBar = require('./svg_components/music_bar.js');
 
 class App extends React.Component {
   render() {
     return (
-      <h1>{this.props.title}</h1>
+      <div>
+        <h1>Scherzando</h1>
+        <MusicBar />
+      </div>
     );
   }
 }
-
-App.propTypes = {
-  title: React.PropTypes.string
-};
 
 module.exports = App;
