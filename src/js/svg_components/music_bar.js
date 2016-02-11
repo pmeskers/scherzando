@@ -1,4 +1,7 @@
 var React = require('react');
+var _ = require('lodash');
+
+var Scale = require('../scale.js');
 var TrebleClef = require('./treble_clef.js');
 var Sharp = require('./sharp.js');
 var Flat = require('./flat.js');
@@ -13,11 +16,18 @@ class MusicBar extends React.Component {
     var leftMargin = 0;
     var lineLength = 1300;
 
-    var trueHeight = topMargin + (4 * gapWidth) + bottomMargin + 50;
+    var trueHeight = topMargin + (4 * gapWidth) + bottomMargin + 200;
     var trueWidth = lineLength + 25;
 
+    var renderedSharps = _.map(this.props.scale.sharps, function(sharp) {
+      return sharpComponents[sharp];
+    });
+    var renderedFlats = _.map(this.props.scale.flats, function(flat) {
+      return flatComponents[flat];
+    });
+
     return (
-      <svg width={this.props.width} height={this.props.height} viewBox={`0 0 ${trueWidth} ${trueHeight}`}>
+      <svg width={this.props.width} height={this.props.height} viewBox='0 -200 1325 1000'>
         <g>
           <TrebleClef />
         </g>
@@ -33,83 +43,71 @@ class MusicBar extends React.Component {
         </g>
 
         <g>
-          {flats.b}
-          {flats.e}
-          {flats.a}
-          {flats.d}
-          {flats.g}
-          {flats.c}
-          {flats.f}
+          {renderedSharps}
+          {renderedFlats}
         </g>
       </svg>
     );
   }
 }
-        // <g>
-          // {sharps.f}
-          // {sharps.c}
-          // {sharps.g}
-          // {sharps.d}
-          // {sharps.a}
-          // {sharps.e}
-          // {sharps.b}
-        // </g>
 
-var sharps = {
-  f: (<g transform="translate(0, -305)">
+var sharpComponents = {
+  f: (<g transform="translate(0, -305)" key='f-sharp'>
         <Sharp />
       </g>),
-  c: (<g transform="translate(120, -130)">
+  c: (<g transform="translate(120, -130)" key='c-sharp'>
         <Sharp />
       </g>),
-  g: (<g transform="translate(240, -370)">
+  g: (<g transform="translate(240, -370)" key='g-sharp'>
         <Sharp />
       </g>),
-  d: (<g transform="translate(360, -195)">
+  d: (<g transform="translate(360, -195)" key='d-sharp'>
         <Sharp />
       </g>),
-  a: (<g transform="translate(480, -10)">
+  a: (<g transform="translate(480, -10)" key='a-sharp'>
         <Sharp />
       </g>),
-  e: (<g transform="translate(600, -260)">
+  e: (<g transform="translate(600, -260)" key='e-sharp'>
         <Sharp />
       </g>),
-  b: (<g transform="translate(720, -75)">
+  b: (<g transform="translate(720, -75)" key='b-sharp'>
         <Sharp />
       </g>)
 };
 
-var flats = {
-  b: (<g transform="translate(0, -310)">
+var flatComponents = {
+  b: (<g transform="translate(0, -310)" key='b-flat'>
         <Flat />
       </g>),
-  e: (<g transform="translate(120, -490)">
+  e: (<g transform="translate(120, -490)" key='e-flat'>
         <Flat />
       </g>),
-  a: (<g transform="translate(240, -250)">
+  a: (<g transform="translate(240, -250)" key='a-flat'>
         <Flat />
       </g>),
-  d: (<g transform="translate(360, -430)">
+  d: (<g transform="translate(360, -430)" key='d-flat'>
         <Flat />
       </g>),
-  g: (<g transform="translate(480, -190)">
+  g: (<g transform="translate(480, -190)" key='g-flat'>
         <Flat />
       </g>),
-  c: (<g transform="translate(600, -370)">
+  c: (<g transform="translate(600, -370)" key='c-flat'>
         <Flat />
       </g>),
-  f: (<g transform="translate(720, -130)">
+  f: (<g transform="translate(720, -130)" key='f-flat'>
         <Flat />
       </g>)
 };
 
 MusicBar.propTypes = {
   height: React.PropTypes.any,
-  width: React.PropTypes.any
+  width: React.PropTypes.any,
+  scale: React.PropTypes.instanceOf(Scale)
 };
 MusicBar.defaultProps = {
   height: 500,
-  width: 825
+  width: 825,
+  scale: new Scale('c', 0, 0)
 }
 
 module.exports = MusicBar;
