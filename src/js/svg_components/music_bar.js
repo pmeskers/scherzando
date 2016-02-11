@@ -107,7 +107,7 @@ MusicBar.propTypes = {
 MusicBar.defaultProps = {
   height: 500,
   width: 825,
-  scale: new Scale('c', 0, 0)
+  scale: new Scale('c', 'major', 0, 0)
 }
 
 module.exports = MusicBar;
