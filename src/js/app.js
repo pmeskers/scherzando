@@ -10,7 +10,6 @@ class App extends React.Component {
     };
   }
   randomScale() {
-    console.log('wtf');
     this.setState({scale: _.sample(scales)});
   }
   render() {
