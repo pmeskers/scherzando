@@ -27,7 +27,7 @@ class MusicBar extends React.Component {
     });
 
     return (
-      <svg width={this.props.width} height={this.props.height} viewBox='0 -200 1325 1000'>
+      <svg className='music-bar' width={this.props.width} viewBox='0 -100 1300 850'>
         <g>
           <TrebleClef />
         </g>
@@ -100,12 +100,10 @@ var flatComponents = {
 };
 
 MusicBar.propTypes = {
-  height: React.PropTypes.any,
   width: React.PropTypes.any,
   scale: React.PropTypes.instanceOf(Scale)
 };
 MusicBar.defaultProps = {
-  height: 500,
   width: 825,
   scale: new Scale('c', 'major', 0, 0)
 }
