@@ -55,3 +55,21 @@ button {
     background-color: darken(#e6f6ff, 5%);
   }
 }
+
+.accidental-enter {
+  opacity: 0.01;
+}
+
+.accidental-enter.accidental-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.accidental-leave {
+  opacity: 1;
+}
+
+.accidental-leave.accidental-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Scherzando</h1>
-        <MusicBar width={'50%'} scale={_.last(scales)}/>
+        <MusicBar width={'50%'} scale={this.state.scale}/>
         <h2 className='scale-label'>{this.state.scale.root} {this.state.scale.type}</h2>
         <button onClick={this.randomScale.bind(this)}>Random</button>
       </div>

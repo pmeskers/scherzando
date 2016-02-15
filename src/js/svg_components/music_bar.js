@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var _ = require('lodash');
 
 var Scale = require('../scale.js');
@@ -26,8 +27,9 @@ class MusicBar extends React.Component {
       return flatComponents[flat];
     });
 
+    console.log('rendering..');
     return (
-      <svg className='music-bar' width={this.props.width} viewBox='0 -100 1300 850'>
+      <svg className='music-bar' width={this.props.width} viewBox='0 -200 1300 920'>
         <g>
           <TrebleClef />
         </g>
@@ -42,10 +44,10 @@ class MusicBar extends React.Component {
           <path d={`M ${lineLength - 18},${topMargin} L ${lineLength - 18},${topMargin + gapWidth * 4}`} style={{stroke:'#000000', strokeWidth:'35'}} id='path4032'/>
         </g>
 
-        <g>
-          {renderedSharps}
+        <ReactCSSTransitionGroup component='g' transitionName="accidental" transitionAppear={true} transitionEnterTimeout={500} transitionAppearTimeout={300} transitionLeaveTimeout={300}>
           {renderedFlats}
-        </g>
+          {renderedSharps}
+        </ReactCSSTransitionGroup>
       </svg>
     );
   }
