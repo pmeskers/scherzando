@@ -6,7 +6,7 @@ var uglify = require('gulp-uglify');
 
 var webpackConfig = require('../webpack.config.js');
 
-gulp.task('dist', ['sass-dist', 'html-dist', 'js-dist']);
+gulp.task('dist', ['sass-dist', 'html-dist', 'assets-dist', 'js-dist']);
 
 gulp.task('sass-dist', function() {
   return gulp.src('src/css/index.scss')
@@ -17,7 +17,11 @@ gulp.task('sass-dist', function() {
 gulp.task('html-dist', function() {
   return gulp.src('src/index.html')
     .pipe(gulp.dest('dist/'))
-    .pipe(connect.reload());
+});
+
+gulp.task('assets-dist', function() {
+  gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('dist/assets/'))
 });
 
 gulp.task('js-dist', ['webpack-uglify-dist']);

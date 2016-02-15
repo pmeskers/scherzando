@@ -5,10 +5,11 @@ var connect = require('gulp-connect');
 
 var webpackConfig = require('../webpack.config.js');
 
-gulp.task('dev', ['webpack', 'sass', 'copy-html', 'server'], function() {
+gulp.task('dev', ['webpack', 'sass', 'copy-html', 'copy-assets', 'server'], function() {
   gulp.watch(['src/js/**/*.js'], ['webpack']);
   gulp.watch(['src/css/**/*.scss'], ['sass']);
   gulp.watch(['src/index.html'], ['copy-html']);
+  gulp.watch(['src/assets/**/*'], ['copy-assets']);
 });
 
 gulp.task('dev-no-reload', ['webpack', 'sass', 'copy-html', 'server-no-reload'], function() {
@@ -35,6 +36,12 @@ gulp.task('sass', function() {
 gulp.task('copy-html', function() {
   gulp.src('src/index.html')
     .pipe(gulp.dest('build/'))
+    .pipe(connect.reload());
+});
+
+gulp.task('copy-assets', function() {
+  gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('build/assets/'))
     .pipe(connect.reload());
 });
 
