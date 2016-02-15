@@ -1,0 +1,6 @@
+---
+applications:
+- name: scherzando
+  memory: 64M
+  path: dist
+  buildpack: https://github.com/pmeskers/staticfile-buildpack.git
